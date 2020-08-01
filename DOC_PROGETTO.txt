@@ -1,0 +1,3 @@
+Il progetto sarà diviso in 5 moduli deployatiin due EAR.
+
+EAR Backend 

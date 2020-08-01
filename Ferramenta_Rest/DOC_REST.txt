@@ -1,0 +1,8 @@
+Questo modulo si occuperà dei servizi rest che chiameranno gli ejb control
+
+C'è un solo package rest:
+	
+	app, definisce il servizio rest
+
+
+Descrizione dell'implementazione dei servizi:

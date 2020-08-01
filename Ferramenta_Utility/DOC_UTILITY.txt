@@ -1,0 +1,11 @@
+Il modulo utility si occuperà di fornire le entità JPA,gli enums,le costanti e i POJO di utility
+
+Sarà diviso in 3 package:
+	
+	models(entità JPA) :
+		
+	enums:
+
+	utils(costanti e POJO di utility):
+
+Struttura nel progetto:

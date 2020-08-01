@@ -1,0 +1,6 @@
+In questo modulo ci saranno gli Ejb control che chiameranno le funzioni Dao.
+
+C'è un solo package ejb:
+
+
+Descrizione dell'implementazione delle classi:

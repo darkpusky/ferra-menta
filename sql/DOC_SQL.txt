@@ -1,0 +1,67 @@
+Nome database = ferramenta_db
+
+AGGIORNATO A = ferramenta_db_BASE
+
+Ci sono 3 tabelle:
+	
+	utenti:	
+			id
+			nome
+			cognome
+			username
+			password
+			email
+			ruolo
+			data_registrazione
+			token
+	
+	prodotti:	
+			id
+			codice
+			prezzo
+			quantita
+			nome
+			descrizione
+			marca
+			attivo
+	
+	storico:
+			id
+			id_utente
+			id_prodotto
+			data_acquisto
+			quantita
+			prezzo_tot
+			stato
+
+La tabella utenti viene usata per l'archiviazione degli utenti registrati
+La tabella prodotti viene usata per l'archiviazione dei prodotti presenti nel magazzino della ferramenta
+La tabella storico viene usata per l'archiviazione dell'acquisto di prodotti da parte dei clienti che rimarrà per 7 giorni dall'acquisto effettuato
+(?) forse da fare tabella per lo storico dell'admin per riempire il magazzino della ferramenta
+
+Connessione JNDI
+	Da aggiungere in standalone sotto il tag <datasources> il seguente codice:
+	
+<xa-datasource jndi-name="java:/Ferramenta" pool-name="Ferramenta" enabled="true" use-ccm="false">
+                    <xa-datasource-property name="ServerName">
+                        localhost
+                    </xa-datasource-property>
+                    <xa-datasource-property name="DatabaseName">
+                        ferramenta_db
+                    </xa-datasource-property>
+                    <driver>com.mysql</driver>
+                    <security>
+                        <user-name>root</user-name>
+                    </security>
+                    <validation>
+                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLValidConnectionChecker"/>
+                        <background-validation>true</background-validation>
+                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLExceptionSorter"/>
+                    </validation>
+</xa-datasource>
+
+Nel caso di problemi con il driver aggiungere sotto il tag <drivers> il seguente codice: 
+
+<driver name="com.mysql" module="com.mysql">
+                        <xa-datasource-class>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</xa-datasource-class>
+                    </driver>

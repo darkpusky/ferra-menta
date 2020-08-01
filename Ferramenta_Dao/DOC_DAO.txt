@@ -1,0 +1,7 @@
+In questo modulo ci saranno i DAO che interrogheranno il database tramite funzioni JPA.
+
+C'è un solo package daos:
+	
+	
+
+Descrizione dell'implementazioni delle classi:
