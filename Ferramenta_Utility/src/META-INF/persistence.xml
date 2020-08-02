@@ -8,6 +8,6 @@
 		<!-- classi che fanno la persistenza-->
 		
 		<!--<class></class>-->
-		
+		<class>models.Utente</class>
 	</persistence-unit>
 </persistence>

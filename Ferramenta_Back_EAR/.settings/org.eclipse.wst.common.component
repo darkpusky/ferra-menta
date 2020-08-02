@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="Ferramenta_Back_EAR">
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+        <dependent-module archiveName="Ferramenta_Rest.war" deploy-path="/" handle="module:/resource/Ferramenta_Rest/Ferramenta_Rest">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="Ferramenta_Dao.jar" deploy-path="/" handle="module:/resource/Ferramenta_Dao/Ferramenta_Dao">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="Ferramenta_Ejb.jar" deploy-path="/" handle="module:/resource/Ferramenta_Ejb/Ferramenta_Ejb">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="Ferramenta_Utility.jar" deploy-path="/lib" handle="module:/resource/Ferramenta_Utility/Ferramenta_Utility">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>
