@@ -1,3 +1,9 @@
-Il progetto sarà diviso in 5 moduli deployatiin due EAR.
+Il progetto sarà diviso in 5 moduli deployati in due EAR.
 
-EAR Backend 
+Giro dell'APP:
+
+-FrontEnd EAR avrà le view che verranno controllate dai bean.
+-I bean chiameranno dei client che effettueranno delle chiamate al serczio Rest in BackEnd EAR.
+-Il servizio Rest chiamerà gli EJB control.
+-Gli EJB control chiameranno i Dao.
+-I Dao interrogheranno il database mappato dalle entità JPA.

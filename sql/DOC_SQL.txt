@@ -37,7 +37,6 @@ Ci sono 3 tabelle:
 La tabella utenti viene usata per l'archiviazione degli utenti registrati
 La tabella prodotti viene usata per l'archiviazione dei prodotti presenti nel magazzino della ferramenta
 La tabella storico viene usata per l'archiviazione dell'acquisto di prodotti da parte dei clienti che rimarrà per 7 giorni dall'acquisto effettuato
-(?) forse da fare tabella per lo storico dell'admin per riempire il magazzino della ferramenta
 
 Connessione JNDI
 	Da aggiungere in standalone sotto il tag <datasources> il seguente codice:

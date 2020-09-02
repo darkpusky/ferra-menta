@@ -5,5 +5,8 @@
             <dependent-object/>
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="Ferramenta_Utility.jar" deploy-path="/lib" handle="module:/resource/Ferramenta_Utility/Ferramenta_Utility">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>

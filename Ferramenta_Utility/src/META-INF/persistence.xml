@@ -6,8 +6,9 @@
 		<non-jta-data-source>java:/Ferramenta</non-jta-data-source>
 		
 		<!-- classi che fanno la persistenza-->
-		
 		<!--<class></class>-->
 		<class>models.Utente</class>
+		<class>models.Prodotto</class>
+		<class>models.Storico</class>
 	</persistence-unit>
 </persistence>

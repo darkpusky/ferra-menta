@@ -4,6 +4,7 @@
 	<comment></comment>
 	<projects>
 		<project>Ferramenta_Web</project>
+		<project>Ferramenta_Utility</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
