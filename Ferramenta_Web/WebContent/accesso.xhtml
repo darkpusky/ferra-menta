@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+    	<title>Ferramenta</title>
+    	<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+    	<style>
+    		.input-button{
+    			border-bottom:2px solid black;
+    			border-right:0px !important;
+    			border-left:0px !important;
+    			border-top:0px !important;
+    			background-color:transparent !important;
+    			background:none !important;
+    			box-shadow:none !important;
+    			border-radius:0px;
+    		}
+    		.input-button:hover{
+    			border-bottom:3px solid black;
+    		}
+    		.input-button:focus{
+    			border-bottom:3px solid black;
+    		}
+    		
+    		.ui-widget{
+			font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji !important;
+			}
+			
+			.button{
+				background-color:#838383;
+				background:#838383 ;
+				box-shadow: none !important;
+				font-weight:400 ;
+				color: white ;
+			}
+			
+			.button:hover{
+				box-shadow:none !important;
+				outline: none !important;
+				border: 1 px solid #a8a8a8 !important;
+				background-color: #96bb7c !important;
+				background: #96bb7c !important;
+			}
+			
+			.ui-messages-info{
+				margin:0px !important;
+			}
+			#pagina .ui-messages-error{
+				margin:0px !important;
+			}
+    	</style>
+    </h:head>
+    
+    <h:body style="margin:0px;background-color:#ebecf1;text-align:center;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji">
+    	<p:messages id="pagina" for="pagina" style="position:fixed;width:100%;top:0;z-index:1;" showDetail="true" closable="true"/>
+    	<div class="ui-g" style="min-height:10vw;width:100%;">
+			<div class="ui-g-12">
+				<h1><strong style="color:#838383">ACCESSO AL </strong><strong style="color:#96bb7c">PORTALE</strong></h1>
+			</div>
+		</div>
+		<p:separator style="width:60%"/>
+    	<br></br><br></br>
+    	
+    	<div class="ui-g">
+    		<div class="ui-g-12"><h2><strong>Sei già un utente? Effettua il login!</strong></h2></div>
+    	</div>
+    	<br></br><br></br>
+    	<h:form id="login">
+    		<div class="ui-g">
+    			<div class="ui-g-12 ui-md-4 ui-lg-4"></div> 
+    			<div class="ui-g-12 ui-md-4 ui-lg-4">
+    				<div class="ui-fluid p-formgrid p-grid">
+    					<div class="p-field p-col-12">
+    						<p:inputText class="input-button" placeholder="Username" value="#{loginBean.utenteLogin.username}"/>
+    					</div>
+    				</div>
+    				<br></br><br></br><br></br>
+    				<div class="ui-fluid p-formgrid p-grid">
+    					<div class="p-field p-col-12">
+    						<p:password class="input-button" placeholder="Password" value="#{loginBean.utenteLogin.password}"/>
+    					</div>
+    				</div>
+    			</div>
+    			<div class="ui-g-12 ui-md-4 ui-lg-4"></div>
+    		</div>
+    		<br></br><br></br>
+    		<div class="ui-g">
+    			<div class="ui-g-4 ui-md-5 ui-lg-5"></div>
+    			<div class="ui-g-4 ui-md-2 ui-lg-2"> 
+    				<p:commandButton value="Entra" class="button" style="width:100%;" update="pagina" action="#{loginBean.login()}"/>
+    			</div>
+    			<div class="ui-g-4 ui-md-5 ui-lg-5"></div>
+    		</div>
+    		
+    	</h:form>
+    	<br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+    	<p:separator style="width:40%"/>
+    	<br></br><br></br>
+    	
+    	<div class="ui-g">
+    		<div class="ui-g-12"><h2><strong>Non sei ancora un utente? Registrati, è gratis!</strong></h2></div>
+    	</div>
+    	
+    	<h:form id="registrazione">
+    		<div class="ui-g">
+    			<div class="ui-g-12 ui-md-6 ui-lg-6">
+    				<p:inputText class="input-button" id="nome" style="width:80%;" placeholder="Nome" value="#{loginBean.utenteRegistrazione.nome}"/>
+    				<small><p:messages for="nome" showDetail="true"/></small>
+    			</div><br></br><br></br><br></br><br></br>
+    			<div class="ui-g-12 ui-md-6 ui-lg-6">
+    				<p:inputText class="input-button" style="width:80%;" id="cognome" placeholder="Cognome" value="#{loginBean.utenteRegistrazione.cognome}"/>
+    				<small><p:messages for="cognome" showDetail="true"/></small>
+    			</div><br></br><br></br><br></br><br></br>
+    		</div>
+    		
+    		<div class="ui-g">
+    			<div class="ui-g-12 ui-md-6 ui-lg-6">
+    				<p:inputText class="input-button" style="width:80%;" id="username" placeholder="Username" value="#{loginBean.utenteRegistrazione.username}"/>
+    				<small><p:messages for="username" showDetail="true"/></small>
+    			</div><br></br><br></br><br></br><br></br>
+    			<div class="ui-g-12 ui-md-6 ui-lg-6">
+    				<p:inputText class="input-button" style="width:80%;" id="email" placeholder="Email" value="#{loginBean.utenteRegistrazione.email}"/>
+    				<small><p:messages for="email" showDetail="true"/></small>
+    			</div><br></br><br></br><br></br><br></br>
+    		</div>
+    		
+    		<div class="ui-g">
+    			<div class="ui-g-12 ui-md-6 ui-lg-6">
+    				<p:password class="input-button" style="width:80%;" id="password" placeholder="Password" value="#{loginBean.utenteRegistrazione.password}"/>
+    				<small><p:messages for="password" showDetail="true"/></small>
+    			</div><br></br><br></br><br></br><br></br>
+    			<div class="ui-g-12 ui-md-6 ui-lg-6">
+    				<p:password class="input-button" style="width:80%;" id="repassword" placeholder="Password ripetuta" value="#{loginBean.pass}"/>
+    				<small><p:messages for="repassword" showDetail="true"/></small>
+    			</div><br></br><br></br><br></br><br></br>
+    		</div>
+    		<br></br><br></br>
+    		<div class="ui-g">
+    			<div class="ui-g-4 ui-md-5 ui-lg-5"></div>
+    			<div class="ui-g-4 ui-md-2 ui-lg-2">
+    				<p:commandButton value="Registrati" update="registrazione,pagina" class="button" style="width:100%;" action="#{loginBean.registrazione}"/>
+    			</div>
+    			<div class="ui-g-4 ui-md-5 ui-lg-5"></div>
+    		</div>
+    		
+    	</h:form>
+    	<br></br>
+    	<ui:include src="/pages/footer.xhtml"/>
+    </h:body>
+    
+</html>

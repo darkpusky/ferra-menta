@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <ui:composition>
+    	
+    	<div class="ui-g-12">
+			<h1><strong style="color:#838383">I TUOI </strong><strong style="color:#96bb7c">UTENTI</strong></h1>
+		</div>
+    	
+    	<h:form id="formUtenti" class="ui-g-12" style="background:none;border:0px;" >
+    		
+    		<p:dataTable var="utente" value="#{adminBean.utenti}" id="tableUtenti">
+    		
+    			<p:column headerText = "ID">
+    				<h:outputText value="#{utente.id}"/>
+    			</p:column>
+    			
+    			<p:column headerText = "Username">
+    				<h:outputText value="#{utente.username}"/>
+    			</p:column>
+    			
+    			<p:column headerText = "Email">
+    				<h:outputText value="#{utente.email}"/>
+    			</p:column>
+    			
+    			<p:column headerText = "Ruolo">
+    				<p:selectOneMenu value="#{utente.ruolo}">
+    					<f:selectItem itemLabel="USER" itemValue="#{ruolo.USER}" rendered="#{utente.ruolo != ruolo.USER}"/>
+    					<f:selectItem itemLabel="ADMIN" itemValue="#{ruolo.ADMIN}" rendered="#{utente.ruolo != ruolo.ADMIN}"/>
+    					<f:selectItem itemLabel="BANNED" itemValue="#{ruolo.BANNED}" rendered="#{utente.ruolo != ruolo.BANNED}"/>
+    				</p:selectOneMenu>
+    			</p:column>
+    			
+    			<p:column headerText = "Modifica">
+    				<p:commandButton value="Modifica" class="button" style="width:80%;" action="#{adminBean.modificaRuoloUtente()}" oncomplete="location.reload()">
+    					<f:setPropertyActionListener value="#{utente}" target="#{adminBean.utenteSel}" />
+    				</p:commandButton>
+    			</p:column>
+    			
+    		</p:dataTable>
+    		
+    	</h:form>
+    	
+    </ui:composition>
+    
+</html>

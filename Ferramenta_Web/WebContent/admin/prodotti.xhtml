@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <ui:composition>
+    	
+    	<div class="ui-g-12">
+			<h1><strong style="color:#838383">I TUOI </strong><strong style="color:#96bb7c">PRODOTTI</strong></h1>
+		</div>
+    	
+    	<h:form id="formProdotti" class="ui-g-12" style="background:none;border:0px;" >
+    		
+    		<p:dataTable var="prodotto" value="#{adminBean.prodotti}">
+    		
+    			<p:column headerText="ID">
+    				<h:outputText value="#{prodotto.id}"/>
+    			</p:column>
+    			
+    			<p:column headerText="Codice">
+    				<p:inputText class="input-button" style="width:80%" placeholder="Codice" value="#{prodotto.codice}"/>
+    			</p:column>
+    			
+    			<p:column headerText="Prezzo">
+    				<p:inputText class="input-button" style="width:80%" placeholder="Prezzo" value="#{prodotto.prezzo}"/>
+    			</p:column>
+    			
+    			<p:column headerText="Nome">
+    				<p:inputText class="input-button" style="width:80%" placeholder="Nome" value="#{prodotto.nome}"/>
+    			</p:column>
+    			
+    			<p:column headerText="Descrizione">
+    				<p:inputTextarea rows="4" cols="30" style="border:0px solid transparent !important;width:100%;height:100%" value="#{prodotto.descrizione}"/>
+    			</p:column>
+    			
+    			<p:column headerText="Marca">
+					<p:inputText class="input-button" style="width:80%" placeholder="Marca" value="#{prodotto.marca}"/>
+    			</p:column>
+    			
+    			<p:column headerText="Attivo">
+    				<p:selectOneMenu value="#{prodotto.attivo}">
+    					<f:selectItem itemLabel="Si" itemValue="#{true}" rendered="#{prodotto.attivo != true}"/>
+    					<f:selectItem itemLabel="No" itemValue="#{false}" rendered="#{prodotto.attivo != false}"/>
+    				</p:selectOneMenu>
+    			</p:column>
+    			
+    			<p:column headerText="Immagine">
+    				<p:inputText class="input-button" style="width:80%" placeholder="Immagine" value="#{prodotto.immagine}" />
+    			</p:column>	
+    			
+    			<p:column headerText = "Modifica">
+    				<p:commandButton value="Modifica" class="button" action="#{adminBean.modificaProdotto()}" oncomplete="location.reload()">
+    					<f:setPropertyActionListener value="#{prodotto}" target="#{adminBean.prodottoSel}" />
+    				</p:commandButton>
+    			</p:column>
+    			
+    		</p:dataTable>
+    		
+    	</h:form>
+    	
+    </ui:composition>
+</html>

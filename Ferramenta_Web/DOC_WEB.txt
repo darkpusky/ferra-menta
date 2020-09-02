@@ -1,0 +1,16 @@
+Nella parte Java del modulo web ci saranno due package:
+
+	service,avrà dentro converter,filter, ecc.:
+	
+
+	view, diviso in due package:
+
+		beans,avrà i bean che si interfacceranno con le view:
+	
+		clients, avrà le classi java client che chiameranno il servizio REST:
+
+Nella parte Web ci saranno le view in formato xhtml:
+
+	
+
+L'implementazione delle classi è la seguente: 

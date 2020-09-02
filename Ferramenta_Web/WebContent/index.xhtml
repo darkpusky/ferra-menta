@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<title>Ferramenta</title>
+		<style>
+		.ui-state-hover{
+			box-shadow:none !important;
+			outline: none !important;
+			border: 1 px solid #a8a8a8 !important;
+			background-color: #96bb7c !important;
+			background: #96bb7c !important;
+		}
+		
+		.ui-state-default{
+			background-color:#838383;
+			background:#838383 ;
+			box-shadow: none !important;
+			font-weight:400 ;
+			color: white ;
+		}
+		
+		.ui-widget{
+			font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji !important;
+		}
+		</style>
+	</h:head>
+	
+	<h:body style="margin:0px;background-color:#ebecf1;text-align:center;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji">
+		
+		<div class="ui-g" style="min-height:10vw;width:100%;">
+			<div class="ui-g-12">
+				<h1><strong style="color:#838383">FERRA</strong><strong style="color:#96bb7c">MENTA</strong></h1>
+			</div>
+		</div>
+		<p:separator style="width:60%"/>
+		<br></br><br></br><br></br>
+		<div class="ui-g" style="width:100%">
+			<div class="ui-g-12">
+				<h2><strong>Entra nel portale!</strong></h2>
+			</div>
+			<div class="ui-g-12">
+				<p:linkButton value="Entra" outcome="accesso" style="min-width:100px;"></p:linkButton>
+			</div>
+		</div>
+		<br></br><br></br><br></br>
+		<p:separator style="width:40%;"/>
+		<br></br><br></br>
+		<div class="ui-g">
+			<div class="ui-g-12">
+				<h2><strong>Tanti prodotti per ogni necessità</strong></h2>
+			</div>
+		</div><br></br><br></br>
+		
+		<p:panelGrid columns="3" layout="grid" style="padding:5px;" styleClass="showcase-text-align-center" columnClasses="ui-g-12 ui-md-12 ui-lg-4, ui-g-12 ui-md-12 ui-lg-4, ui-g-12 ui-md-12 ui-lg-4">
+			<p:graphicImage name="cacciavite_croce.jpg" style="padding:50px;"/>
+			<p:graphicImage name="coltello_acciaio.jpg" style="padding:50px;"/>
+			<p:graphicImage name="cutter_metallo.jpg" style="padding:50px;"/>
+			
+			<p:graphicImage name="segaccio.jpg" style="padding:50px;"/>
+			<p:graphicImage name="valigetta_attrezzi.jpg" style="padding:50px;"/>
+			<p:graphicImage name="vite.jpg" style="padding:50px;"/>
+		</p:panelGrid>
+		
+		<div class="ui-g">
+			<div class="ui-g-12">
+				<h2><strong>E non solo...</strong></h2>
+			</div>
+		</div><br></br>
+		
+		<ui:include src="/pages/footer.xhtml"/>
+		
+	</h:body>
+	
+</html>

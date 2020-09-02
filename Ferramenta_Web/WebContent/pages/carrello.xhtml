@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <ui:composition>
+    	
+    	<div class="ui-g-12">
+			<h1><strong style="color:#838383">IL TUO </strong><strong style="color:#96bb7c">CARRELLO</strong></h1>
+		</div>
+    	
+    	<h:form class="ui-g-12" style="background:none;border:0px;" id="formCarrello">
+    		<p:dataList value="#{carrelloBean.prodotti}" var="prodotto" type="definition" style="width:100%;">
+    		
+    			<div class="ui-g">
+    				
+    				<div class="ui-g-1 ui-sm-2 ui-md-3"></div>
+    				<div class="ui-g-10 ui-sm-8 ui-md-6">
+    					
+    					<div class="ui-g">
+    						<div class="ui-g-7">
+    							<div class="ui-g-12">
+    								<h3>#{prodotto.conteggio} X #{prodotto.nome}</h3>
+    							</div>
+    							<div class="ui-g-12">
+    								<h3>Totale: #{prodotto.prezzo * prodotto.conteggio} €</h3>
+    							</div>
+    						</div>
+    						<div class="ui-g-5">
+    							<p:graphicImage name="#{prodotto.immagine == '' ? 'no.png' : prodotto.immagine}" style="height:50px;"/>
+    						</div>
+    					</div>
+    					
+    				</div>
+    				<div class="ui-g-1 ui-sm-2 ui-md-3"></div>
+    				
+    			</div>
+    			<div class="ui-g">
+    				<div class="ui-g-4 ui-md-5 ui-lg-5"></div>
+    				<div class="ui-g-4 ui-md-2 ui-lg-2"> 
+    					<p:commandButton value="Elimina" class="button button-danger" id="delete" style="width:80%;" onclick="location.reload()" action="#{carrelloBean.rimuoviCarrello(prodotto)}"/>
+    				</div>
+    				<div class="ui-g-4 ui-md-5 ui-lg-5"></div>
+    			</div>
+    			<p:separator style="width:50%;"/>
+    		</p:dataList>
+    		
+    		<div class="ui-g">
+    			<div class="ui-g-12"><h1>Totale: #{carrelloBean.getTotal()}</h1></div>
+    		</div>
+    		
+    		<div class="ui-g">
+    			<div class="ui-g-4 ui-md-5 ui-lg-5">
+    				
+    			</div>
+    			<div class="ui-g-4 ui-md-2 ui-lg-2">  
+    				<p:commandButton  value="Compra" class="button" style="width:100%;" action="#{carrelloBean.compra()}" update="growl"/>
+    			</div>
+    			<div class="ui-g-4 ui-md-5 ui-lg-5"></div>
+    		</div>
+    	</h:form>
+    	
+    </ui:composition>
+    
+</html>

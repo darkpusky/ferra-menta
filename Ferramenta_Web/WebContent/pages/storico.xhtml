@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <ui:composition>
+    	
+    	<div class="ui-g-12">
+			<h1><strong style="color:#838383">IL TUO </strong><strong style="color:#96bb7c">STORICO</strong></h1>
+		</div>
+    	
+    	<h:form class="ui-g-12" style="background:none;border:0px;" id="formStorico">
+    		
+    		<p:accordionPanel value="#{storicoBean.storici}" var="storici"> 
+    			<p:tab title="Ordine del #{storici.key}">
+    				<p:dataList value="#{storici.value}" var="storico" type="definition">
+    					<div class="ui-g">
+    					
+    						<div class="ui-g-4">
+    							<p:graphicImage name="#{storico.prodotto.immagine == '' ? 'no.png' : storico.prodotto.immagine}"/>
+    						</div>
+    						
+    						<div class="ui-g-12 ui-md-8">
+    							<div class="ui-g">
+    								<div class="ui-g-12">
+    									<h3><strong> #{storico.quantita} X #{storico.prodotto.nome}</strong></h3>
+    								</div>
+    								<div class="ui-g-12">
+    									<h3><strong> Totale: #{storico.prezzo}</strong></h3>
+    								</div>
+    								<div class="ui-g-12">
+    									<h3><strong> Stato: </strong></h3><h3 class="#{storico.stato == stato.IN_CORSO ? 'stato-incorso' : (storico.stato == stato.APPROVATO ? 'stato-approvato' : 'stato-rfiutato')}"><strong>#{storico.stato}</strong></h3>
+    								</div>
+    							</div>   						
+    						</div>
+    					</div>
+    					<p:separator style="width:60%;"/>
+    				</p:dataList>
+    			</p:tab>
+    			<br/><br/><br/>
+    		</p:accordionPanel>
+    		
+    	</h:form>
+    	
+   	</ui:composition>
+</html>

@@ -1,0 +1,215 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>Ferramenta</title>
+		<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+		<p:importEnum type="enums.Pagine" var="pagina"></p:importEnum>
+		<p:importEnum type="enums.Stato" var="stato"></p:importEnum>
+		<p:importEnum type="enums.Ruolo" var="ruolo"></p:importEnum>
+		<style>
+		
+			.ui-menuitem{
+				box-shadow:none !important;
+				background-color:transparent;
+			}
+			
+			.ui-menuitem-active{
+				background:none;
+				background-color:#96bb7c;
+				font-weight:600;
+			}
+			
+			.active-menu{
+				background:none;
+				background-color:#96bb7c;
+				font-weight:600 !important;
+				color:black !important;
+			}
+			
+			.ui-widget-content a{
+				color:white;
+			}
+			
+			.ui-widget{
+				font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji !important;
+			}
+			
+			.ui-state-hover{
+				box-shadow:none !important;
+				background: none !important;
+				background-color: #96bb7c !important;
+				font-weight: 600 !important;
+			}
+			
+			#contentAccount .ui-state-hover{
+				font-weight: 400 !important;
+			}
+			
+			.input-button{
+    			border-bottom:2px solid black !important;
+    			border-right:0px !important;
+    			border-left:0px !important;
+    			border-top:0px !important;
+    			background-color:transparent !important;
+    			background:none !important;
+    			box-shadow:none !important;
+    			border-radius:0px;
+    		}
+    		.input-button:hover{
+    			border-bottom:3px solid black !important;
+    		}
+    		.input-button:focus{
+    			border-bottom:3px solid black !important;
+    		}
+    		
+    		.ui-panel-content{
+    			width:100%;
+    			padding:0px !important;
+    		}
+    			  		
+			.button{
+				background-color:#838383 !important;
+				background:#838383 !important;
+				box-shadow: none !important;
+				font-weight:400 !important;
+				color: white !important;
+			}
+			
+			.button:hover{
+				box-shadow:none !important;
+				outline: none !important;
+				border: 1 px solid #a8a8a8 !important;
+				background-color: #96bb7c !important;
+				background: #96bb7c !important;
+			}
+			
+			.button-danger{
+				background-color:transparent !important;
+				background:transparent !important;
+				border:1px solid red !important;
+				color:black !important;
+				font-weight:600 !important;
+			}
+			
+			.button-danger:hover{
+				background-color:red !important;
+				background:red !important;
+				color:white !important;
+			}
+			
+			.ui-growl{
+				background-color:#96bb7c!important;
+			}
+			
+			.ui-dataview-header{
+				display:none !important;
+			}
+			
+			.ui-widget-content{
+				border:none;
+				background:transparent;
+			}
+			
+			.ui-dialog-content{
+				padding:0px !important;
+			}
+			
+			.ui-accordion-header{
+				background:none !important;
+				background-color: #838383 !important;
+				border:none !important;
+				color:white !important;
+			}
+			
+			.ui-accordion-header:focus{
+				background-color: #96bb7c !important;
+				color:black !important;
+			}
+			
+			.ui-state-active{
+				background-color: #96bb7c !important;
+				color:black !important;
+			}
+			
+			.stato-incorso{
+				color:blue;
+			}
+			
+			.stato-approvato{
+				color:green;
+			}
+			
+			.stato-rfiutato{
+				color:red;
+			}
+			
+			.ui-menu-child{
+				background:none !important;
+				background-color:grey !important;
+			}
+			
+			#formUtenti th{
+				background:none !important;
+				background-color: #96bb7c !important;
+			}
+			
+			#formProdotti th{
+				background:none !important;
+				background-color: #96bb7c !important;
+			}
+			
+			.ui-state-default{
+				box-shadow:none !important; 
+			}
+			
+			.ui-selectonemenu-items-wrapper{
+				background-color:white !important;
+			}
+		</style>
+	</h:head>
+
+	<h:body style="margin:0px;background-color:#ebecf1;text-align:center;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji">
+		<ui:include src="/pages/navbar.xhtml" />
+		<p:growl id="growl" for="pagina" showDetail="true" life="3000"/>  
+		<p:panel id="content" class="ui-g" style="margin-top:100px;min-height:90vh;background:none;border:0px;width:100%;" >
+			
+			<p:panel class="ui-g-12" id="contentHome" style="background:none;border:0px;" rendered="#{mainBean.pagina == pagina.HOME}">
+				<h1>Benvenuto #{loginBean.utenteLogin.username}, controlla il catalogo o lo stato dei tuoi ordini.</h1>
+				<h1>Grazie per essere un nostro cliente!</h1>
+			</p:panel>
+			
+			<p:panel id="contentAccount" style="background:none;border:0px;" rendered="#{mainBean.pagina == pagina.ACCOUNT}">
+				<ui:include src="/pages/account.xhtml"/>
+			</p:panel>
+			
+			<p:panel id="contentCatalogo" style="background:none;border:0px;" rendered="#{mainBean.pagina == pagina.CATALOGO}">
+				<ui:include src="/pages/catalogo.xhtml"/>
+			</p:panel>
+			
+			<p:panel id="contentCarrello" style="background:none;border:0px;" rendered="#{mainBean.pagina == pagina.CARRELLO}">
+				<ui:include src="/pages/carrello.xhtml"/>
+			</p:panel>
+			
+			<p:panel id="contentStorico" style="background:none;border:0px;" rendered="#{mainBean.pagina == pagina.STORICO}">
+				<ui:include src="/pages/storico.xhtml"/>
+			</p:panel>
+			
+			<p:panel id="contentUtenti" style="background:none;border:0px;" rendered="#{mainBean.pagina == pagina.UTENTI}">
+				<ui:include src="/admin/utenti.xhtml"/>
+			</p:panel>
+			
+			<p:panel id="contentProdotti" style="background:none;border:0px;" rendered="#{mainBean.pagina == pagina.PRODOTTI}">
+				<ui:include src="/admin/prodotti.xhtml"/>
+			</p:panel>
+			
+		</p:panel>
+		<ui:include src="/pages/footer.xhtml"/>
+	</h:body>
+
+</html>

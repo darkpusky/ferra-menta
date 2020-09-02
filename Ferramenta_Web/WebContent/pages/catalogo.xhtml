@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <ui:composition>
+    	
+    	<div class="ui-g-12">
+			<h1><strong style="color:#838383">I NOSTRI </strong><strong style="color:#96bb7c">PRODOTTI</strong></h1>
+		</div>
+    	
+    	<h:form class="ui-g-12" style="background:none;border:0px;" id="form">
+    		<p:dataView var="prodotto" value="#{homeBean.prodotti}" layout="grid" >
+    			<p:dataViewGridItem>
+    				<p:panel style="border:1px solid black;" rendered="#{prodotto.attivo}">
+    					<h:panelGrid columns="1" style="width:100%;">
+    						<p:graphicImage name="#{prodotto.immagine == '' ? 'no.png' : prodotto.immagine}" style="height:50px;"/>
+    						<h:outputText value="#{prodotto.nome}"/>
+    						<h:outputText value="#{prodotto.marca}" />
+    						<h:outputText value="#{prodotto.prezzo} €"/>
+    					
+    						<h:panelGrid columns="3" style="width:100%;">
+    							<p:commandButton value="-" class="button" update=":form" disabled="#{prodotto.conteggio == 1}" action="#{prodotto.decrement()}"/>
+    							<h:outputText style="font-weight:bold;" value="#{prodotto.conteggio}"/>
+    							<p:commandButton value="+" class="button" update=":form" action="#{prodotto.increment()}"/>
+    						</h:panelGrid><br></br>
+    						<p:commandButton value="Aggiungi" class="button" style="width:90%;" action="#{homeBean.addCarrello()}" update=":form,growl">
+    							<f:setPropertyActionListener value="#{prodotto}" target="#{homeBean.selProdotto}" />
+    						</p:commandButton><br></br>
+    						<p:commandLink title="Dettagli" update=":form:details" oncomplete="PF('details').show()">
+                        		<h:outputText styleClass="ui-icon pi pi-search" style="margin:0 auto;color:black;" />
+                        		<f:setPropertyActionListener value="#{prodotto}" target="#{homeBean.selProdotto}" />
+                    		</p:commandLink>
+    					</h:panelGrid>
+    				</p:panel>
+    				<br></br><br></br><br></br>
+    			</p:dataViewGridItem>
+    			
+    		</p:dataView>
+    		
+    		<p:dialog modal="true" widgetVar="details" showEffect="fade" hideEffect="fade" resizable="false" draggable="false" style="max-width:50%;min-width:50%;">
+    			<p:panel id="details" style="background-color:white;">
+    				<h:panelGrid columns="1">
+    					<h:panelGrid columns="2">
+    						<h:outputText value="Codice: " />
+    						<h:outputText value="#{homeBean.selProdotto.codice}" />
+    						<h:outputText value="Nome: " />
+    						<h:outputText value="#{homeBean.selProdotto.nome}" />
+    						<h:outputText value="Prezzo: " />
+    						<h:outputText value="#{homeBean.selProdotto.prezzo}" />
+    						<h:outputText value="Descrizione: " />
+    						<h:outputText value="#{homeBean.selProdotto.descrizione}" />
+    						<h:outputText value="Marca: " />
+    						<h:outputText value="#{homeBean.selProdotto.marca}" />
+    					</h:panelGrid>
+    				</h:panelGrid>
+    			</p:panel>
+    		</p:dialog>
+    		
+    	</h:form>
+    	
+    </ui:composition>
+    
+</html>

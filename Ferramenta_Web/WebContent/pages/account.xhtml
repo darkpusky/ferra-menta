@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <ui:composition>
+    	
+    	<h:form id="account" class="ui-g-12" style="background:none;border:0px;" >
+				
+				<div class="ui-g">
+					<div class="ui-g-12 ui-md-6">
+						<h2><strong>Data di registrazione: #{loginBean.utenteLogin.dataConverter()}</strong></h2>
+					</div>
+					<div class="ui-g-12 ui-md-6"></div>
+				</div>
+				<br></br><br></br>
+				<div class="ui-g">
+					<div class="ui-g-12 ui-md-6">
+						<p:inputText class="input-button" id="nome" style="width:80%" placeholder="Nome" value="#{loginBean.utenteLogin.nome}" required="true">
+						</p:inputText>
+					</div>
+					<div class="ui-g-12 ui-md-6">
+						<p:message for="nome" severity="error"/>
+					</div>
+				</div>
+				<br></br><br></br>
+				<div class="ui-g">
+					<div class="ui-g-12 ui-md-6">
+						<p:inputText class="input-button" id="cognome" style="width:80%" placeholder="Cognome" value="#{loginBean.utenteLogin.cognome}" required="true">
+						</p:inputText>
+					</div>
+					<div class="ui-g-12 ui-md-6">
+						<p:message for="cognome" severity="error"/>
+					</div>
+				</div>
+				<br></br><br></br>
+				<div class="ui-g">
+					<div class="ui-g-12 ui-md-6">
+						<p:inputText class="input-button" id="username" style="width:80%" placeholder="Username" value="#{loginBean.utenteLogin.username}" required="true">
+						</p:inputText>
+					</div>
+					<div class="ui-g-12 ui-md-6">
+						<p:message for="username" severity="error"/>
+					</div>
+				</div>
+				<br></br><br></br>
+				<div class="ui-g">
+					<div class="ui-g-12 ui-md-6">
+						<p:inputText class="input-button" id="email" style="width:80%" placeholder="Email" value="#{loginBean.utenteLogin.email}" required="true">
+							<f:validateRegex pattern="([^.@]+)(\.[^.@]+)*@([^.@]+\.)+([^.@]+)" />
+						</p:inputText>
+					</div>
+					<div class="ui-g-12 ui-md-6">
+						<p:message for="email" severity="error"/>
+					</div>
+				</div>
+				<br></br><br></br>
+				<div class="ui-g">
+    				<div class="ui-g-4 ui-md-5 ui-lg-5"></div>
+    				<div class="ui-g-4 ui-md-2 ui-lg-2"> 
+    					<p:commandButton validateClient="true" value="Modifica" update="account,growl" class="button" action="#{homeBean.modificaAccount()}" style="width:100%;"/>
+    				</div>
+    				<div class="ui-g-4 ui-md-5 ui-lg-5"></div>
+    			</div>
+    			<br></br><br></br>
+    			<p:separator style="width:60%"/>
+    			<br></br><br></br>
+    			
+    			<div class="ui-g">
+    				<div class="ui-g-12">
+    					<h2><strong>Modifica password</strong></h2>
+    				</div>
+    			</div>
+    			<br></br><br></br>
+    			
+    			<div class="ui-g" >
+    				<div class="ui-g-12 ui-md-6 ui-lg-6">
+    					<p:password class="input-button" style="width:80%;" id="password" placeholder="Password attuale" value="#{homeBean.oldPassword}"/>
+    					<small><p:messages for="password" id="passwordMsg" showDetail="true"/></small>
+    				</div><br></br><br></br><br></br><br></br>
+    				<div class="ui-g-12 ui-md-6 ui-lg-6">
+    					<p:password class="input-button" style="width:80%;" id="repassword" placeholder="Nuova password" value="#{homeBean.newPassword}"/>
+    					<small><p:messages for="repassword" id="repasswordMsg" showDetail="true"/></small>
+    				</div><br></br><br></br><br></br><br></br>
+    			</div>
+    			<br></br><br></br>
+    			<div class="ui-g">
+    				<div class="ui-g-4 ui-md-5 ui-lg-5"></div>
+    				<div class="ui-g-4 ui-md-2 ui-lg-2"> 
+    					<p:commandButton  value="Modifica password" action="#{homeBean.modificaPassword()}" update="passwordMsg,repasswordMsg,growl" class="button" style="width:100%;"/>
+    				</div>
+    				<div class="ui-g-4 ui-md-5 ui-lg-5"></div>
+    			</div>
+    			<br></br><br></br>
+    			<p:separator style="width:80%;border:1px solid red;"/>
+    			<br></br>
+    			
+    			<div class="ui-g">
+    				<div class="ui-g-12">
+    					<h2 style="color:red;"><strong>Danger zone</strong></h2>
+    				</div>
+    			</div>
+    			<br></br><br></br>
+    			<div class="ui-g">
+    				<div class="ui-g-4 ui-md-5 ui-lg-5"></div>
+    				<div class="ui-g-4 ui-md-2 ui-lg-2"> 
+    					<p:commandButton value="Elimina account" class="button button-danger" onclick="PF('flag').show()" id="delete" style="width:100%;"/>
+    					<p:confirmDialog message="Sei sicuro di voler eliminare il tuo account? Anche il tuo storico verrà cancellato" widgetVar="flag" global="true" showEffect="fade" hideEffect="fade">
+        					<p:commandButton value="Si" action="#{homeBean.cancellaAccount()}" update="growl" oncomplete="PF('flag').hide()" styleClass="button" icon="pi pi-check" />
+        					<p:commandButton value="No" styleClass="button" onclick="PF('flag').hide()" icon="pi pi-times" />
+    					</p:confirmDialog> 
+    				</div>
+    				<div class="ui-g-4 ui-md-5 ui-lg-5"></div>
+    			</div>
+    			<br></br><br></br>
+			</h:form>
+    	
+    </ui:composition>
+    
+</html>
